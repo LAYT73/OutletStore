@@ -18,31 +18,31 @@ const MainPage = () => {
       <div className={styles.main_content}>
         <div className={styles.main_content_buttons}>
           <button className={styles.main_content_buttons_el}>
-            Title
+            Игровые аккаунты
           </button>
           <button className={styles.main_content_buttons_el}>
-            Title
+            Ключи активации
           </button>
           <button className={styles.main_content_buttons_el}>
-            Title
+            Бот Telegram
           </button>
           <button className={styles.main_content_buttons_el}>
-            Title
+            Чат Telegram
           </button>
           <button className={styles.main_content_buttons_el}>
-            Title
+            Канал Telegram
           </button>
           <button className={styles.main_content_buttons_el}>
-            Title
+            Связь с поддержкой
           </button>
           <button className={styles.main_content_buttons_el}>
-            Title
+            Группа ВКонтакте
           </button>
           <button className={styles.main_content_buttons_el}>
-            Title
+            plati.ru
           </button>
           <button className={styles.main_content_buttons_el}>
-            Title
+            Связь с администратором
           </button>
         </div>
         <div className={styles.main_content_description}>
@@ -76,11 +76,11 @@ const MainPage = () => {
           </div>
           <div className={styles.main_prices_price_body}>
             <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
+            <h3 className={styles.main_prices_price_body_h3}>25к - 200</h3>
+            <h3 className={styles.main_prices_price_body_h3}>50к - 350</h3>
+            <h3 className={styles.main_prices_price_body_h3}>200к - 1200</h3>
+            <h3 className={styles.main_prices_price_body_h3}>500к - 2800</h3>
+            <h3 className={styles.main_prices_price_body_h3}>1кк - 5400</h3>
           </div>
         </div>
         <div className={styles.main_prices_price}>
@@ -94,12 +94,13 @@ const MainPage = () => {
             </div>
           </div>
           <div className={styles.main_prices_price_body}>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
+            <h3 className={styles.main_prices_price_body_h3}>1шт - 300</h3>
+            <h3 className={styles.main_prices_price_body_h3}>2шт - 550</h3>
+            <h3 className={styles.main_prices_price_body_h3}>5шт - 1300</h3>
+            <h3 className={styles.main_prices_price_body_h3}>10шт - 2300</h3>
+            <h3 className={styles.main_prices_price_body_h3}>25шт - 4000</h3>
+            <h3 className={styles.main_prices_price_body_h3}>40шт - 6200</h3>
+            <h3 className={styles.main_prices_price_body_h3}>50шт - 7100</h3>
           </div>
         </div>
 
