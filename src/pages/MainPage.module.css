@@ -53,12 +53,13 @@
 .main_content_buttons_el {
     width: 30%;
     margin-top: 34px;
-    font-size: 16px;
-    padding: 16px;
+    font-size: 20px;
+    padding: 26px;
     border-radius: 50px;
     background-color: #1b1e25;
     color: white !important;
     border: 2px solid #dcb182;
+    font-weight: 400;
     -webkit-transition: all .5s;
     transition: all .5s;
 }
@@ -78,7 +79,7 @@
     margin-top: 10vh;
     display: flex;
     align-items: center;
-    padding: 60px 140px;
+    padding: 60px 180px;
     box-sizing: border-box;
 }
 
@@ -87,15 +88,18 @@
 }
 
 .main_content_description_info {
-    margin-left: 36px;
+    margin-left: 80px;
 }
 
 .main_content_description_info h1 {
     color: #dcb182;
+    font-size: 36px;
+    font-weight: 400;
 }
 
 .main_content_description_info h3 {
     font-size: 24px;
+    font-weight: 300;
 }
 
 .main_content_description_info p {
@@ -112,7 +116,8 @@
 
 .main_content_text h1 {
     width: 100%;
-    font-size: 32px;
+    font-weight: 500;
+    font-size: 36px;
     text-align: center;
 }
 
@@ -128,8 +133,9 @@
     width: 320px;
     margin: 0 auto;
     margin-top: 40px;
-    font-size: 16px;
-    padding: 16px;
+    font-size: 20px;
+    padding: 26px;
+    font-weight: 400;
     border-radius: 50px;
     color: white !important;
     background-color: #1b1e25;
