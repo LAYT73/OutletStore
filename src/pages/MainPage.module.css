@@ -180,7 +180,7 @@
 }
 
 .main_container2_logo_img {
-    margin-top: 15vh;
+    margin-top: 8vh;
     pointer-events: none;
     margin-bottom: 10vh;
 }
@@ -244,7 +244,7 @@
     font-weight: 400;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .main_content_buttons_el {
         width: 100%;
     }
