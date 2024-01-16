@@ -1,0 +1,64 @@
+::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: auto auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.inputs input {
+    width: 320px;
+    margin: 20px auto auto auto;
+    font-size: 20px;
+    padding: 26px;
+    font-weight: 400;
+    border-radius: 50px;
+    color: white !important;
+    background-color: #1b1e25;
+    border: none;
+    text-align: center;
+}
+
+.btn {
+    width: 260px;
+    margin: 40px auto 0;
+    font-size: 20px;
+    padding: 20px;
+    font-weight: 400;
+    border-radius: 50px;
+    color: white !important;
+    background-color: #1b1e25;
+    border: 2px solid #dcb182;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+.btn:hover {
+    background-color: #dcb182;
+    color: #1b1e25;
+    border: 2px solid #dcb182;
+}
+
+@media (max-width: 900px) {
+    .inputs input {
+        width: 200px;
+        font-size: 16px;
+    }
+
+    .btn {
+        width: 160px;
+        font-size: 16px;
+    }
+}
