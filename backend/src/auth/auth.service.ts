@@ -62,6 +62,49 @@ export class AuthService {
     }
 
     async getUser() {
-        return await this.userRepository.find()[0];
+        const user = await this.userRepository.find();
+        return user;
     }
+
+    async update(newLogin: string, newPassword: string, oldLogin: string, oldPassword: string) {
+        try {
+            const user = await this.getUser();
+
+            
+            if (user[0].login != oldLogin) {
+                return ({
+                    code: 401,
+                    message: "Incorrect password or login!"
+                })
+            }
+            const isValid = await bcrypt.compare(oldPassword, user[0].password);
+            if (!isValid) {
+                return ({
+                    code: 401,
+                    message: "Incorrect password or login!"
+                })
+            }
+            const hash = await bcrypt.hash(newPassword, 10);
+            
+            await this.userRepository
+                .createQueryBuilder()
+                .update(Auth)
+                .set({ login: newLogin, password: hash })
+                .where('login = :login', { login: user[0].login })
+                .execute();
+            return ({
+                code: 201,
+                message: "Данные успешно обновлены"
+            })    
+        } catch (error) {
+            console.error(error);
+            
+            return ({
+                code: 403,
+                message: error,
+            })
+        }
+    }
+
+    
 }
