@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './MainPage.module.css';
 import Up from './../assets/up.png';
 import Down from './../assets/down.png';
 import mainLogo from './../assets/mainLogo.png';
 import footerLogo from './../assets/footerLogo.png';
 import Cart from './../assets/cart.png';
+import axios from 'axios';
 
 const MainPage = () => {
+  const [buttons, setButtons] = useState([]);
+
+  useEffect(()=>{
+    axios.get(
+      "http://localhost:3000/button"
+    ).then((res)=>{
+      console.log(res);
+      setButtons(res.data);
+    }).catch((err)=>{
+      console.error(err);
+    })
+  },[])
+
   return (
     <div className={styles.main}>
       <div className={styles.main_container}>
@@ -17,33 +31,15 @@ const MainPage = () => {
       </div>
       <div className={styles.main_content}>
         <div className={styles.main_content_buttons}>
-          <button className={styles.main_content_buttons_el}>
-            Игровые аккаунты
-          </button>
-          <button className={styles.main_content_buttons_el}>
-            Ключи активации
-          </button>
-          <button className={styles.main_content_buttons_el}>
-            Бот Telegram
-          </button>
-          <button className={styles.main_content_buttons_el}>
-            Чат Telegram
-          </button>
-          <button className={styles.main_content_buttons_el}>
-            Канал Telegram
-          </button>
-          <button className={styles.main_content_buttons_el}>
-            Связь с поддержкой
-          </button>
-          <button className={styles.main_content_buttons_el}>
-            Группа ВКонтакте
-          </button>
-          <button className={styles.main_content_buttons_el}>
-            plati.ru
-          </button>
-          <button className={styles.main_content_buttons_el}>
-            Связь с администратором
-          </button>
+          {
+            buttons[0] && buttons.map((el,i)=>{
+              return (
+                <button onClick={()=>{window.location.replace(el.link);}} className={styles.main_content_buttons_el}>
+                  {el.title}
+                </button>
+              )
+            })
+          }
         </div>
         <div className={styles.main_content_description}>
           <img src={Cart} alt="" />

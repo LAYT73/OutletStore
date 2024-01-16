@@ -1,9 +1,18 @@
 import styles from './ResetPage.module.css'
-import up from "../assets/up2.png";
-import down from "../assets/down2.png";
-import cross from "../assets/cross.png";
+
 import {Link} from "react-router-dom";
-export const ResetPage = () => {
+import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+
+export const ResetPage = ({isAdmin}) => {
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(!isAdmin) {
+            navigate("/admin/login")
+        }
+    },[])
+
     return (
         <>
             <div className={styles.container}>
