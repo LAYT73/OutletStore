@@ -16,7 +16,7 @@ export class AuthController {
 
   @Put("update")
   async update(@Body() body) {
-    const isValid = await bcrypt.compare("1iqd2huSD9812eak0sd", body.hash);
+    const isValid = await bcrypt.compare(process.env.SECRET_KEY, body.hash);
     if (!isValid) {
       return ({
         code: 403,

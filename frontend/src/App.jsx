@@ -5,6 +5,7 @@ import {LoginPage} from "./pages/LoginPage.jsx";
 import {AdminPage} from "./pages/AdminPage.jsx";
 import {ResetPage} from "./pages/ResetPage.jsx";
 import { useEffect, useState } from 'react';
+import { InfoPage } from './pages/InfoPage.jsx';
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/admin/login" element={<LoginPage isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
           <Route path="/admin/panel" element={<AdminPage isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>}/>
           <Route path="/admin/reset" element={<ResetPage isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>}/>
+          <Route path="/admin/info" element={<InfoPage isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>}/>
       </Routes>
     </>
   )

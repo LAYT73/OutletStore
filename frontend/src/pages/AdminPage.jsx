@@ -6,18 +6,24 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-
+import { useAlert } from 'react-alert'
 export const AdminPage = ({ setIsAdmin, isAdmin }) => {
     const navigate = useNavigate();
     const login = localStorage.getItem("login");
     const [buttons, setButtons] = useState([]);
-
+    const alert = useAlert()
     const updateHandler = () => {
-        axios.put("http://localhost:3000/button/update", {
+        axios.put(import.meta.env.VITE_API_URL+"/button/update", {
             hash: localStorage.getItem("hash"),
             buttons: buttons,
         }).then((res)=>{
+          if (res.data == 0 && res.status == 200){
             console.log(res);
+            alert.show('Данные успешно обновлены!', {
+              timeout: 4000, // custom timeout just for this one alert
+              type: 'success',
+            })
+          }
         }).catch((err)=>{
             console.error(err);
         })
@@ -25,7 +31,7 @@ export const AdminPage = ({ setIsAdmin, isAdmin }) => {
 
     useEffect(()=>{
         axios.get(
-            "http://localhost:3000/button"
+            import.meta.env.VITE_API_URL+"/button"
           ).then((res)=>{
             setButtons(res.data);
           }).catch((err)=>{
@@ -109,7 +115,7 @@ export const AdminPage = ({ setIsAdmin, isAdmin }) => {
                         Выход
                     </button>
                     <hr/>
-                    <button>
+                    <button onClick={()=> navigate("/admin/info")}>
                         Редактирование страницы
                     </button>
                     <hr/>

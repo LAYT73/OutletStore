@@ -17,7 +17,7 @@ export class ButtonController {
 
   @Put('update')
   async login(@Body() body) {
-    const isValid = await bcrypt.compare("1iqd2huSD9812eak0sd", body.hash);
+    const isValid = await bcrypt.compare(process.env.SECRET_KEY, body.hash);
     if (!isValid) {
       return ({
         code: 403,

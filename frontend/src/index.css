@@ -12,6 +12,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#__react-alert__ div div div span {
+  font-size: 14px;
+  font-family: Jost, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+#__react-alert__ div div div {
+  border-radius: 16px !important;
+  border: 2px solid #dcb182;
+
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -41,6 +53,22 @@ input {
   font-size: 20px;
   font-weight: 400;
   border-radius: 50px;
+  color: white !important;
+  background-color: #1b1e25;
+  border: none;
+  text-align: center;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+textarea {
+  width: 100%;
+  margin: 40px auto 0;
+  min-height: 230px;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  border-radius: 16px;
   color: white !important;
   background-color: #1b1e25;
   border: none;

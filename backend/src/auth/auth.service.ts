@@ -28,7 +28,10 @@ export class AuthService {
         });
 
         const hash = checkUser[0] ? checkUser[0].password : await bcrypt.hash("pSD132Ocx13zDGw1783", 10);
-        if (!checkUser[0] && !checkUserTest[0]) {
+
+        const hasUsers = await this.getUser();
+
+        if (!hasUsers[0]) {
             const user = this.userRepository.create({
                 login: "testingOutletStore134",
                 password: hash,
@@ -51,7 +54,7 @@ export class AuthService {
             })
         }
 
-        const secretHash = await bcrypt.hash("1iqd2huSD9812eak0sd", 10)
+        const secretHash = await bcrypt.hash(process.env.SECRET_KEY, 10)
 
         return ({
             code: 201,
@@ -68,6 +71,12 @@ export class AuthService {
 
     async update(newLogin: string, newPassword: string, oldLogin: string, oldPassword: string) {
         try {
+            if (!newLogin || !newPassword) {
+                return ({
+                    code: 401,
+                    message: "Incorrect password or login!"
+                })            
+            }
             const user = await this.getUser();
 
             

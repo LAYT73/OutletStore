@@ -9,10 +9,23 @@ import axios from 'axios';
 
 const MainPage = () => {
   const [buttons, setButtons] = useState([]);
+  const [pageInfo, setPageInfo] = useState({
+    titleBlock: "", 
+    mainTitleBlock: "", 
+    descriptionBlock: "", 
+    titleInfo: "", 
+    descriptionInfo: "", 
+    buttonLink: "", 
+    buttonText: "", 
+    priceTitleFirst: "", 
+    priceCostsFirst: "", 
+    priceTitleSecond: "", 
+    priceCostsSecond: ""
+  })
 
   useEffect(()=>{
     axios.get(
-      "http://localhost:3000/button"
+      import.meta.env.VITE_API_URL+"/button"
     ).then((res)=>{
       console.log(res);
       setButtons(res.data);
@@ -20,6 +33,21 @@ const MainPage = () => {
       console.error(err);
     })
   },[])
+
+  useEffect(()=>{
+    axios.get(
+      import.meta.env.VITE_API_URL+"/page"
+    ).then((res)=>{
+      console.log(res);
+      if (res.data[0]) {
+        setPageInfo(res.data[0]);
+      }
+    }).catch((err)=>{
+      console.error(err);
+    })
+  },[])
+
+
 
   return (
     <div className={styles.main}>
@@ -44,19 +72,19 @@ const MainPage = () => {
         <div className={styles.main_content_description}>
           <img src={Cart} alt="" />
           <div className={styles.main_content_description_info}>
-            <h3>OUTLET STORE - Твой проводник</h3>
-            <h1>Играй больше, плати<br /> в два раза меньше!</h1>
+            <h3>{pageInfo.titleBlock}</h3>
+            <h1>{pageInfo.mainTitleBlock}</h1>
             <p>
-            Мы внимательно следим за актуальностью продаваемых ключей и аккаунтов. Весь ассортимент добыт мирным путём, без мошенничества. Прочитайте отзывы. Покупайте смело и наслаждайтесь.
+            {pageInfo.descriptionBlock}
             </p>
           </div>
         </div>
         <div className={styles.main_content_text}>
-          <h1>А ещё у нас можно выгодно купить донат!</h1>
-          <h3>Еженедельно мы разыгрываем донат-коды в самых популярных играх. <br />Присоединяйся в наш канал, следи за постами и побеждай.</h3>
+          <h1>{pageInfo.titleInfo}</h1>
+          <h3>{pageInfo.descriptionInfo}</h3>
         </div>
-        <button className={styles.main_content_button}>
-          Узнать стоимость доната
+        <button onClick={()=>{window.location.replace(pageInfo.buttonLink);}} className={styles.main_content_button}>
+          {pageInfo.buttonText}
         </button>
       </div>
       <div className={styles.main_prices}>
@@ -65,18 +93,14 @@ const MainPage = () => {
             <div className={styles.main_prices_price_header_hr}>
             </div>
             <div className={styles.main_prices_price_header_title}>
-              GTA 5 RP
+              {pageInfo.priceTitleFirst}
             </div>
             <div className={styles.main_prices_price_header_hr}>
             </div>
           </div>
           <div className={styles.main_prices_price_body}>
-            <h3 className={styles.main_prices_price_body_h3}>10к - 85</h3>
-            <h3 className={styles.main_prices_price_body_h3}>25к - 200</h3>
-            <h3 className={styles.main_prices_price_body_h3}>50к - 350</h3>
-            <h3 className={styles.main_prices_price_body_h3}>200к - 1200</h3>
-            <h3 className={styles.main_prices_price_body_h3}>500к - 2800</h3>
-            <h3 className={styles.main_prices_price_body_h3}>1кк - 5400</h3>
+            <h3 className={styles.main_prices_price_body_h3}>
+            {pageInfo.priceCostsFirst}</h3>
           </div>
         </div>
         <div className={styles.main_prices_price}>
@@ -84,19 +108,13 @@ const MainPage = () => {
             <div className={styles.main_prices_price_header_hr}>
             </div>
             <div className={styles.main_prices_price_header_title}>
-              Data Random
+              {pageInfo.priceTitleSecond}
             </div>
             <div className={styles.main_prices_price_header_hr}>
             </div>
           </div>
           <div className={styles.main_prices_price_body}>
-            <h3 className={styles.main_prices_price_body_h3}>1шт - 300</h3>
-            <h3 className={styles.main_prices_price_body_h3}>2шт - 550</h3>
-            <h3 className={styles.main_prices_price_body_h3}>5шт - 1300</h3>
-            <h3 className={styles.main_prices_price_body_h3}>10шт - 2300</h3>
-            <h3 className={styles.main_prices_price_body_h3}>25шт - 4000</h3>
-            <h3 className={styles.main_prices_price_body_h3}>40шт - 6200</h3>
-            <h3 className={styles.main_prices_price_body_h3}>50шт - 7100</h3>
+            <h3 className={styles.main_prices_price_body_h3}>{pageInfo.priceCostsSecond}</h3>
           </div>
         </div>
 

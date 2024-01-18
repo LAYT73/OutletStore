@@ -130,8 +130,29 @@
     margin-top: 2vh;
     text-align: center;
     color: white;
+    margin-bottom: 40px;
 }
 
 .container_body_link:hover {
     color: white;
+}
+
+@media (max-width: 1100px) {
+    .container_header, .container_body {
+        width: 90%;
+        box-sizing: border-box;
+    }
+
+    .container_header textarea, .container_header input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container_body button {
+        box-sizing: border-box;
+    }
+
+    .container_body input {
+        width: 90%;
+    }
 }

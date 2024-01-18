@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { useAlert } from 'react-alert'
 export const ResetPage = ({isAdmin}) => {
     const navigate = useNavigate();
     useEffect(()=>{
@@ -19,14 +19,29 @@ export const ResetPage = ({isAdmin}) => {
     const [newLogin, setNewLogin] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
+    const alert = useAlert()
   
     const handleSubmit = () => {
+
       if (confirmNewPassword == newPassword) {
-        axios.put("http://localhost:3000/auth/update", {
+        axios.put(import.meta.env.VITE_API_URL+"/auth/update", {
             oldLogin, oldPassword, newLogin, newPassword, hash: localStorage.getItem("hash")
         })
         .then((res)=>{
             console.log(res);
+            if (res.data.code == 201){
+              console.log(res);
+              alert.show('Данные успешно обновлены!', {
+                timeout: 4000, // custom timeout just for this one alert
+                type: 'success',
+              })
+            } else {
+              alert.show('Проверьте корректность введенных данных!', {
+                timeout: 4000, // custom timeout just for this one alert
+                type: 'error',
+              })
+
+            }
         }).catch((err)=>{
             console.log(err);
         })
